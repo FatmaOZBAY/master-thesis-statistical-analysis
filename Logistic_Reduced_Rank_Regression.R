@@ -2,6 +2,10 @@
 library(lmap) # lpca function
 library(openxlsx) # write (save) data into excel file
 
+# Load data set
+load("dataset_V1.1.Rdata") # person-period dataset that saved in the "Person_Period_Dataset.R" file
+
+
 # Select "complete cases" for X matrix! Because glm is doing it "complete cases". 
 # Be careful, glm is doing it for all X and Y. But here, it is done for X.
 dataset_V1.1 <- dataset_V1.1[complete.cases(dataset_V1.1[, 24:34]), ]
@@ -10,7 +14,7 @@ dataset_V1.1 <- dataset_V1.1[complete.cases(dataset_V1.1[, 24:34]), ]
 ####################### Dimensionality Selection ###############################
 ################################################################################
 # All dimensions were tried on this code (not separate codes) 
-# S (dimension) changed ffrom 1 to 9
+# S (dimension) changed from 1 to 9
 Y <- dataset_V1.1[, 4:23] # matrix for response variables
 X <- model.matrix(~ poly(Age, 9) + Sex + PMI + PSA + PC + FV + 
                     PA + Neglect + PDeath + PDivorce + OPL + PIllness + EA, data = dataset_V1.1)[, -1] # matrix for predictor variables
