@@ -23,7 +23,7 @@ library(dplyr)
 # Load the required data set
 main_data_NCS <- read.delim("20240-0002-Data.tsv")
 
-# Load merged CAs dataset
+# Load CAs dataset
 load("merged_CAs.Rdata")
 
 # Select twenty disorders
